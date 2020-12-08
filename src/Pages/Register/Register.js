@@ -2,7 +2,8 @@ import React,{useState} from "react";
 import LoaderButton from '../../Components/LoaderButton/LoaderButton';
 import {useForm } from 'react-hook-form';
 import {Link } from 'react-router-dom';
-import "./Register.css";
+import Header from '../../Components/Header/Header';
+// import "./Register.css";
 
 const Register = (props) => {
   const [password, setPassword] = useState("");
@@ -18,7 +19,6 @@ const Register = (props) => {
   const onSubmit = (data) => {
     setLoading(true);
     setErrorMessage('');
-    console.log(data.user_type)
     if (data.user_type === "Select Account Type") {
       setLoading(false);
       setErrorMessage("Please select an Account type")
@@ -53,7 +53,7 @@ const Register = (props) => {
   };
 
   const watcher = (e) => {
-    if (e.target.value.length >= password.length) {
+    if (e.target.value.length >= password.length || e.target.value.length < password.length) {
       if (e.target.value === password) {
         setUnmatched(false);
       } else {
@@ -64,6 +64,8 @@ const Register = (props) => {
 
   const { register, handleSubmit } = useForm();
   return (
+    <div className="container">
+      <Header />
       <div className="SignUP">
         <div className="LoginHero">
           <Link to="/">
@@ -246,7 +248,8 @@ const Register = (props) => {
           </form>
         </div>
       </div>
-    )
+    </div>
+  )
 };
 
 export default Register;

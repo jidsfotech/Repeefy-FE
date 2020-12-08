@@ -1,6 +1,9 @@
+.container{
+  background: #293B50;
+  width: 100%;
+}
 .Login,
 .SignUP {
-  background: var(--about-bg);
   width: 100%;
   height: 100vh;
   padding-top: 6rem;
@@ -14,11 +17,11 @@
 }
 
 .FormWrapper {
-  width: 35%;
+  width: 45%;
   background: #fff;
   margin: auto;
   padding: 2rem;
-  box-shadow: -1px 2px 2px 1px rgba(4, 4, 19, 0.1);
+  border-radius: 10px;
 }
 
 .LoginHero {
@@ -42,6 +45,10 @@
   font-size: 0.9rem;
   text-align: center;
   font-weight: 900;
+  color: rgb(8, 8, 8);
+}
+.HeroSmallText{
+  color: #fff;
 }
 
 .LoginLabel {
@@ -56,7 +63,7 @@
 }
 
 .LoginLabelLink:hover {
-  color: #32e0c4;
+  color: var(--body-color);
 }
 
 .LoginInputs {
@@ -126,7 +133,7 @@
 
 @media screen and (min-width: 780px) {
   .SignUP .FormWrapper {
-    width: 36%;
+    width: 38%;
     margin: auto;
   }
 

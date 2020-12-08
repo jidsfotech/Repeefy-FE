@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import "./Login.css";
+import  "./Login.css";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import Axios from "axios";
-import LoaderButton from '../../Components/LoaderButton/LoaderButton'
+import LoaderButton from '../../Components/LoaderButton/LoaderButton';
+import Header from '../../Components/Header/Header';
 // import getTokenDetails from "../../lib/jwt";
 // import images from "../../images/images";
 // import LoaderButton from "../LoaderButton/LoaderButton"
@@ -33,10 +34,15 @@ const Login = () => {
     //     // }
     //     // window.alert("We couldn't connect to Repify. Make sure you're connected to the internet and try again.");
     //   });
+    setTimeout(() => {
+      alert('SignIn Successful!');
+      setLoading(false);
+    }, 3000);
   };
 
   return (
-      <>
+      <div className='container'>
+        <Header />
         <div className="Login">
           <div className="LoginHero">
             <Link to="/">
@@ -80,7 +86,7 @@ const Login = () => {
                 />
               </label>
               <p className="LoginLabel">
-                <Link className="LoginLabelLink" to="/forgetpassword">
+                <Link className="LoginLabelLink" to="#">
                   Forgot Password?
                 </Link>
               </p>
@@ -96,7 +102,7 @@ const Login = () => {
             </form>
           </div>
         </div>
-      </>
+      </div>
     )
 };
 export default Login;
