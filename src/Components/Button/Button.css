@@ -1,0 +1,11 @@
+.BtnLink {
+    background: var(--primary-color);
+    color: #fff;
+    padding: 0.65rem 0.8rem;
+    border-radius: 0.3rem;
+    text-decoration: none;
+}
+
+.BtnLink:hover {
+    opacity: 0.6;
+}
