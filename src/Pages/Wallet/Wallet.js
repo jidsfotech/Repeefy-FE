@@ -39,6 +39,7 @@ const Wallet = (props) => {
 
   // Direct to add benefactors page
   const addBenefactorsHandler = () => {
+      // Note 
   //  props.history.push("/dashboard/user/add/benefactor");
   };
 
