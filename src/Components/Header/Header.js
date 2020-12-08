@@ -21,7 +21,7 @@ const Header = ({ handleSignup, handleLogin }) => {
         </div>
         <ul className="navItems">
           <li className={ isOpen ? 'navLink active' : 'navLink' }>
-            <Link className="links" onClick={handleLogin} to="/login">
+            <Link className="links" onClick={handleLogin} to="/dashboard">
               Login
             </Link>
             <Link className="links" onClick={handleSignup} to="/register">
