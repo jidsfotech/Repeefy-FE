@@ -1,0 +1,125 @@
+.how-we-work-section {
+    position: relative;
+    width: 100vw;
+    padding-bottom: 90px;
+    background: #243344;
+}
+
+.how-we-work-section h2 {
+    width: 80%;
+    margin: 0 auto;
+    font-size: 2.2rem;
+    text-align: center;
+    text-transform: capitalize;
+    padding-top: 65px;
+    padding-bottom: 60px;
+    color: #fff;
+}
+
+.container {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    padding-top: 20px;
+    padding-bottom: 50px;
+    justify-content: space-evenly;
+}
+
+.btn-flat {
+    text-decoration: none;
+}
+
+.column {
+    background-color: #293B50;
+    height: 270px;
+    width: 330px;
+    position: relative;
+    box-sizing: border-box;
+    border-radius: 12px;
+    border-top: 12px solid #32E0C4;
+    padding: 32px 40px;
+    box-shadow: 0px 4px 18px rgba(1, 30, 33, 0.1);
+    cursor: pointer;
+}
+
+.column:hover {
+    border-color: rgb(116, 247, 252);
+}
+
+.column img{
+    height: 48px;
+    width: 48px;
+}
+
+.column .title {
+    font-weight: 900;
+    font-size: 20px;
+    text-transform: uppercase;
+    color: #fff;
+    text-align: left;
+    margin-top: 16px;
+}
+
+.column .title:hover {
+    color: rgb(116, 247, 252);
+}
+
+.column p {
+    font-size: 16px;
+    line-height: 132.4%;
+    text-transform: capitalize;
+    color: #3F3D3D;
+    text-align: left;
+    margin-top: 24px;
+}
+
+.column .image {
+    width: 148px;
+    height: 103px;
+    background-repeat: no-repeat;
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+/*  Media Query */
+
+@media screen and (max-width: 1040px) {
+    .container {
+        width: 90%;
+        height: 90%;
+        flex-direction: column;
+        padding-top: 20px;
+        align-items: center;
+        justify-content: space-between;
+        margin-left: 22px;
+    }
+    .dummy {
+        padding-top: 30px;
+    }
+
+    .column .image {
+        display: none;
+    }
+
+    .column.edit .title{
+        font-size: 18px;
+    }
+
+    .column:hover {
+        border-color: rgb(132, 245, 253);
+    }
+
+    .column .title:hover {
+        color: rgb(116, 247, 252);
+    }
+
+    .how-we-work-section{
+        padding-bottom: 0;
+    }
+
+    .how-we-work-section h2{
+        font-size: 1.7rem;
+        padding-bottom: 32px;
+    }
+}

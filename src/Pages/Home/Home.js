@@ -1,8 +1,17 @@
 import React from "react";
 import "./Home.css";
+import HowWeWork from "./HowWeWork/HowWeWork";
+import Footer from "../../Components/Footer/Footer";
+import Hero from "./Hero/Hero";
 
-const Home = (props) => {
-  return <div className="Home">Home</div>;
+const HomeNew = () => {
+  return (
+    <div className="HomePage">
+      <Hero />
+      <HowWeWork />
+      <Footer />
+    </div>
+  );
 };
 
-export default Home;
+export default HomeNew;
