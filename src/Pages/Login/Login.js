@@ -6,8 +6,6 @@ import Axios from "axios";
 import LoaderButton from '../../Components/LoaderButton/LoaderButton';
 import Header from '../../Components/Header/Header';
 // import getTokenDetails from "../../lib/jwt";
-// import images from "../../images/images";
-// import LoaderButton from "../LoaderButton/LoaderButton"
 
 const Login = () => {
   const { register, handleSubmit } = useForm();
@@ -16,32 +14,25 @@ const Login = () => {
 
   const onSubmit = (data) => {
     setLoading(true);
-    // return Axios.post("/user/login", data)
-    //   .then(async (res) => {
-    //     const data = await res.data;
-    //     localStorage.setItem("UserToken", data.token);
-    //     // redirects the user to the dashboard
-    //     window.location.href = "/dashboard/user/wallet";
-    //   })
-    //   .catch((err) => {
-    //     //This ERROR CHECK IS FAILING
-    //    if (err.response.data.hasOwnProperty("message")) {
-    //       setErrorMessage(err.response.data.message);
-    //     }
-    //     setLoading(false);
-    //     // window.alert("Oops!!!.. Some error occured please try again, make sure you're connected to internet" );
+    return Axios.post("https://repify-demo-api.herokuapp.com/api/user/login", data)
+      .then(async (res) => {
+        const data = await res.data;
+        localStorage.setItem("UserToken", data.token);
+        // redirects the user to the dashboard
+        window.location.href = "/dashboard";
+      })
+      .catch((err) => {
+        //This ERROR CHECK IS FAILING
+       if (err.response.data.hasOwnProperty("message")) {
+          setErrorMessage(err.response.data.message);
+        }
+        setLoading(false);
         
-    //     // }
-    //     // window.alert("We couldn't connect to Repify. Make sure you're connected to the internet and try again.");
-    //   });
-    setTimeout(() => {
-      alert('SignIn Successful!');
-      setLoading(false);
-    }, 3000);
+      });
   };
 
   return (
-      <div className='container'>
+      <div className='containers'>
         <Header />
         <div className="Login">
           <div className="LoginHero">
