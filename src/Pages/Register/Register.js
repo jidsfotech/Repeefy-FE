@@ -3,6 +3,8 @@ import LoaderButton from '../../Components/LoaderButton/LoaderButton';
 import {useForm } from 'react-hook-form';
 import {Link } from 'react-router-dom';
 import Header from '../../Components/Header/Header';
+import Axios from 'axios';
+import getTokenDetails from "../../lib/jwt";
 // import "./Register.css";
 
 const Register = (props) => {
@@ -25,31 +27,35 @@ const Register = (props) => {
       return ;
     }
     delete data.confirmpassword;
-
-    // return Axios.post("/user/registration", data)
-    //   .then(async(res) => {
-    //     const data = await res.data;
-    //     //data to send to dashboard component
-    //     const payload = await getTokenDetails(data["data"].token);
-    //     if (data.message === "user created") {
-    //       window.alert("Registration successful");
-    //       window.location.href = "/";
-    //     }
-    //   })
-    //   .catch((err) => {
-    //     setLoading(false)
-    //     if (err.hasOwnProperty("response")) {
-    //       if (err.response.hasOwnProperty("data")) {
-    //         if (err.response.data.hasOwnProperty("message")) {
-    //           setErrorMessage(err.response.data.message);
-    //         }
-    //       }
-    //     }
-    //   });
-    setTimeout(() => {
-      setLoading(false);
-      alert('Registration Successful!')
-    }, 4000);
+    const regData ={
+    "firstName": data.firstName,
+    "lastName": data.lastName,
+    "email": data.email,
+    "password": data.password,
+    "user_type": data.user_type,
+    "phone_number": data.phone_number,
+    "username": data.username}
+      
+    return Axios.post("https://repify-demo-api.herokuapp.com/api/user/create", regData)
+      .then(async(res) => {
+        const data = await res.data;
+        //data to send to dashboard component
+        const payload = await getTokenDetails(data["data"].token);
+        if (data.message === "user created") {
+          localStorage.setItem("UserToken", payload);
+          window.location.href = "/dashboard";
+        }
+      })
+      .catch((err) => {
+        setLoading(false)
+        if (err.hasOwnProperty("response")) {
+          if (err.response.hasOwnProperty("data")) {
+            if (err.response.data.hasOwnProperty("message")) {
+              setErrorMessage(err.response.data.message);
+            }
+          }
+        }
+      });
   };
 
   const watcher = (e) => {
@@ -64,7 +70,7 @@ const Register = (props) => {
 
   const { register, handleSubmit } = useForm();
   return (
-    <div className="container">
+    <div className="containers">
       <Header />
       <div className="SignUP">
         <div className="LoginHero">
