@@ -1,0 +1,216 @@
+body {
+    background: var(--body-color);
+    max-width: 100vw;
+    overflow-x: hidden;
+}
+
+.Wallet {
+    background-color: #293B50;
+    width: 100vw;
+    height: 100vh;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: 45% 45%;
+    grid-template-rows: 15% 15% auto;
+    grid-column-gap: 50px;
+    grid-row-gap: 50px;
+    justify-content: center;
+}
+
+.pageTitle {
+    margin-top: 1rem;
+    justify-self: start;
+    padding: 5px;
+    color: #F3F3F4;
+}
+
+.pageTitle .H1 {
+    font-size: 2rem;
+    font-weight: bold;
+}
+
+.space-div {
+   padding: 5px;
+}
+
+.addBenefactors-btn {
+    margin-top: 1rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.addBenefactors-btn button {
+    background: #243344;
+    color: #32E0C4;
+    border: 2px solid #32E0C4;
+    border-radius: 5px;
+    width: 10rem;
+    height: 40px;
+    font-size: 16px;
+}
+
+.addBenefactors-btn button:focus,
+.addBenefactors-btn button:active, 
+.addBenefactors-btn button:hover {
+    background: #32E0C4;
+    border: 2px solid #32E0C4;
+    color: rgb(64, 66, 66);
+    outline: none;
+}
+
+.walletDetails {
+    grid-column: 1 / span 2;
+    display: flex;
+    justify-content: space-between;
+}
+
+.totalBenefactors,
+.pendingRequest,
+.walletBalance,
+.totalBeneficiary {
+    padding: 10px;
+    background: #F9FAFA;    
+    border-radius: 8px;
+}
+
+.totalBenefactors:hover,
+.pendingRequest:hover,
+.walletBalance:hover,
+.totalBeneficiary:hover {
+    background: #32E0C4;
+    color: rgb(64, 66, 66)
+}
+
+.walletTableWrapper {
+    grid-column: 1 / span 2;
+    background: rgba(118, 234, 215, 0.08);
+    border-radius: 5px;
+    color: #F3F3F4;
+}
+
+.walletTable {
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    font-weight: 12px;
+    font-size: 14px;
+}
+
+.walletTable thead th {
+    padding: 15px;
+}
+
+.walletTableBody {
+    text-align: left;
+}
+
+.walletTableRows {
+    border: 1px solid #e7eaec;
+    box-shadow: 0 0 0 1px rgb(243, 244, 247);
+}
+
+.walletTableRows td {
+    padding: 15px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.flexWrapper {
+    display: flex;
+    align-content: center;
+    justify-content: space-around;
+    width: 100%;  
+}
+
+.flexWrapper .emptyImg img {
+    height: 10em;
+}
+
+.flexWrapper .emptyInfo {
+    margin-top: 2em;
+    text-align: center;
+    width: fit-content;
+}
+
+.flexWrapper .emptyInfo h3 {
+    margin-bottom: 1rem;
+}
+
+/* Media Query */
+
+@media screen and (max-width: 1040px) {
+    .Wallet {
+        margin: auto;
+        padding: 1rem;
+        overflow-x: hidden !important;
+
+    }
+
+    .grid-container {
+        grid-template-columns: 22rem;
+        grid-template-rows: 4em 3em 15em 25em;
+        row-gap: 2rem;
+        justify-content: center;
+    }
+
+    .addBenefactors-btn button {
+        padding: 2px;
+        font-size: 12px;
+        width: fit-content ;
+        height: 33px;
+    }
+
+    .walletDetails {
+        flex-direction: column;
+        grid-column: 1 / span 1;
+    }
+
+    .totalBenefactors,
+    .pendingRequest,
+    .walletBalance,
+    .totalBeneficiary {
+        display: flex;
+        justify-content: space-between;
+        padding: 10px;
+    }
+
+    .walletTableWrapper {
+        grid-column: 1 / span 1;
+    }
+
+    .walletTable {
+        font-weight: 11px;
+        font-size: 10px;
+    }
+
+    .walletTable thead th {
+        font-size: 11px;
+    }
+
+    .walletTable thead tr th:nth-child(2) {
+        display: none;
+    }
+
+    .walletTableRows td {
+        font-size: 11px;
+        text-align: left;
+    }
+
+    .walletTableRows td:nth-child(2) {
+        display: none;
+    }
+
+    .flexWrapper{
+        padding: 5px;
+        flex-direction: column;
+        align-items: center;
+        height: fit-content;
+        width: 25em;
+        margin-left: 2rem;
+    }
+}
