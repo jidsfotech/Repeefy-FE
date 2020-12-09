@@ -52,7 +52,7 @@ const Wallet = (props) => {
         </div>
         <div className="addBenefactors-btn row1-col2">
           <button onClick={addBenefactorsHandler} >Add Benefactors</button>
-          <di></di>
+          <div></div>
           <button onClick={addBenefactorsHandler} >Add beneficiaries</button>
           <di></di>
           <button onClick={addBenefactorsHandler} >Fund Wallet</button>
