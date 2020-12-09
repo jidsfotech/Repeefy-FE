@@ -1,0 +1,15 @@
+.page404{
+    text-align: center;
+    padding: 5px;
+    background-color: #293B50;
+    height: 100vh;
+}
+.page404 p{
+    margin: 20px 0;
+    font-size: 2rem;
+    color: #f33303;
+}
+.nav404{
+    background-color: var(--dark-color);
+    padding: 5px;
+}
