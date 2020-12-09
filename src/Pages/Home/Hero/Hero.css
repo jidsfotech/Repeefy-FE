@@ -70,14 +70,20 @@
     }
 
     .HeroImage{
-        width: 100%;
+        width: 50%;
+        margin: 0 auto;
         order: 1;
         margin-top: -4rem;
     }
 
+    .Home .HeroHeading {
+        font-size: 2.5rem;
+    }
+
     .HeroContent {
         order: 2;
-        width: 100%;
+        width: 80%;
+        margin: 0 auto;
         text-align: center;
         margin-top: -20vh;
     }
@@ -90,3 +96,5 @@
         font-size: 1.5rem;
     }
 }
+
+@media screen and (max-width: 450px)
