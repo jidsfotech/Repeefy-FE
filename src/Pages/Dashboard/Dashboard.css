@@ -1,0 +1,63 @@
+/* Top Nav Bar */
+.TopNav {
+    background: #243344;
+    padding-top: 1rem;
+    padding-bottom: 0.8rem;
+    position: sticky;
+    top: 0;
+}
+
+.DashboardNav {
+    width: 93%;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Notify.NavItem {
+    padding-right: 1rem;
+}
+
+.NavItem {
+    padding-left: 1rem;
+}
+
+.UserProfile {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #EDEEEF;
+}
+
+.UserProfile img.UserImg {
+    width: 35px;
+    height: 35px;
+    border-radius: 100%;
+    padding: 0;
+}
+
+/** MEDIA QUERY */
+
+@media screen and (max-width: 1040px) {
+    .DashboardNav {
+        height: 2rem;
+    }
+
+    .BrandLogo img {
+        height: 2rem;
+    }
+
+    .NavItem {
+        height: 1.5rem;
+    }
+
+    .UserProfile img.UserImg {
+        width: 1.5rem;
+        height: 1.5rem;
+       
+    }
+
+}
