@@ -1,6 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Wallet.css";
 import WalletTable from "./WalletTable";
+import AddWallet from "./AddWallet";
+import AddBeneficiary from "./AddBeneficiary";
 //import getTokenDetails from "./jwt";
 //import Axios from "axios";
 
@@ -11,6 +13,8 @@ const Wallet = (props) => {
   const [totalBenefactors, setTotalBenefactors] = useState(0);
   const [pendingRequest, setPendingRequest] = useState(0);
   const [totalBeneficiary, setTotalBeneficiary] = useState(0);
+  const [addWallet, setAddWallet] = useState(false);
+  const [addBeneficiary, setAddBeneficiary] = useState(false);
 
 
   // connect to back end and fetch all benefactors data for a user
@@ -43,6 +47,17 @@ const Wallet = (props) => {
   //  props.history.push("/dashboard/user/add/benefactor");
   };
 
+  const fundWallet = () => {
+      // Note 
+      setAddWallet(!addWallet);
+  };
+
+  const addBeneficiaryHandle = () => {
+    setAddBeneficiary(!addBeneficiary)
+  }
+
+
+
   return (
     <div className="Wallet">
       <div className="grid-container">
@@ -53,9 +68,9 @@ const Wallet = (props) => {
         <div className="addBenefactors-btn row1-col2">
           <button onClick={addBenefactorsHandler} >Add Benefactors</button>
           <div></div>
-          <button onClick={addBenefactorsHandler} >Add beneficiaries</button>
+          <button onClick={addBeneficiaryHandle} >Add beneficiaries</button>
           <di></di>
-          <button onClick={addBenefactorsHandler} >Fund Wallet</button>
+          <button onClick={fundWallet} >Fund Wallet</button>
         </div>
         <div className="walletDetails row2-spanned-across-two-columns">
           <div className="walletBalance">
@@ -79,6 +94,8 @@ const Wallet = (props) => {
           <WalletTable benefactors={wallet} />
         </div>
       </div>
+      <AddWallet addWallet={addWallet} setAddWallet={setAddWallet} />
+      <AddBeneficiary addBeneficiary={addBeneficiary} setAddBeneficiary={setAddBeneficiary} />
     </div>
   );
 };
