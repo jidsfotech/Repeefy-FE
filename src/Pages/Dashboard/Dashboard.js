@@ -27,7 +27,7 @@ const Dashboard = (props) => {
               alt="Profile"
               className="UserImg NavItem"
             />
-            <p className="UserName NavItem">User Name</p>
+            <p className="UserName NavItem">Daniel Bemolaski!</p>
           </div>
         </nav>
       </div>
