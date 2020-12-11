@@ -1,0 +1,104 @@
+
+.beneficiariesTable {
+    width: 100%;
+    padding: 20px;
+    text-align: left;
+    font-weight: 12px;
+    font-size: 14px;
+}
+
+.beneficiariesTable thead th {
+    padding: 5px;
+}
+
+.beneficiariesTableBody {
+    text-align: left;
+}
+
+.beneficiariesTableRows td {
+    padding: 5px;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+}
+
+.beneficiary-status {
+    width: 17px;
+    height: 17px;
+    border-radius: 50%;
+}
+
+.flexWrapper {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    width: 65em;
+}
+
+.flexWrapper .emptyImg img {
+    height: 10em;
+}
+
+.flexWrapper .emptyInfo {
+    margin-top: 2em;
+    width: 27%;
+}
+
+.flexWrapper .emptyInfo h6 {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+
+/* Media Query */
+
+@media screen and (max-width: 1040px) {
+    .beneficiariesTable {
+        font-weight: 11px;
+        font-size: 10px;
+        padding: 5px;
+    }
+
+    .beneficiariesTable thead th {
+        padding: 5px;
+        font-size: 11px;
+    }
+
+    .beneficiariesTableRows td {
+        padding: 5px;
+        font-size: 11px;
+        text-align: left;
+    }
+
+    .beneficiariesTable thead tr th:nth-child(2) {
+        display: none;
+    }
+
+    .beneficiariesTableRows td:nth-child(2) {
+            display: none;
+    }
+
+    .indicator {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+    }
+
+    .flexWrapper {
+        padding: 5px;
+        flex-direction: column;
+        align-items: center;
+        height: 25em;
+        width: 25em;
+    }
+
+    .flexWrapper .emptyImg img {
+        height: 10em;
+    }
+
+    .flexWrapper .emptyInfo {
+        width: 25em;
+    }
+}
