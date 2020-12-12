@@ -36,7 +36,7 @@ const AddWallet = ({ addWallet, setAddWallet }) => {
   };
 
   const onSuccess = (data) => {
-    if (data.reference === reference) {
+    if (data.status === "success") {
       //implement toast on success
       addToast(`Wallet Found of ${amount} was Successful`, {
         appearance: "success",
@@ -81,7 +81,10 @@ const AddWallet = ({ addWallet, setAddWallet }) => {
           <button
             className="BeneficiaryAdd"
             type="submit"
-            onClick={() => initializePayment(onSuccess, onClose)}
+            onClick={() => {
+              setAddWallet(false);
+              initializePayment(onSuccess, onClose);
+            }}
           >
             Fund
           </button>
