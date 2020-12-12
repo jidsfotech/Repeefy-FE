@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Wallet.css";
-import WalletTable from "./WalletTable";
+// import WalletTable from "./WalletTable";
 import AddWallet from "./AddWallet";
 import AddBeneficiary from "./AddBeneficiary";
 import "./Benefactors.css";
@@ -83,9 +83,9 @@ const Wallet = (props) => {
         <div className="action-btn row1-col2">
           <button onClick={addBenefactorsHandler} >Add Benefactors</button>
           <div></div>
-          <button onClick={addBeneficiaryHandle} >Add beneficiaries</button>
+          <button >Add beneficiaries</button>
           <di></di>
-          <button onClick={fundWallet} >Fund Wallet</button>
+          <button >Fund Wallet</button>
         </div>
         <div className="walletDetails row2-spanned-across-two-columns">
           <div className="walletBalance">
