@@ -1,0 +1,21 @@
+.CBtn {
+    padding: 0.4rem 1.4rem;
+    border-radius: 3px;
+    text-align: center;
+    color: rgba(73, 61, 61, 1);
+    cursor: pointer;
+}
+
+.CBtn:active, .CBtn:focus {
+    outline:none;
+}
+
+.BtnFill {
+    background: var(--primary-color);
+    border: none;
+}
+
+.BtnEmpty {
+    background: none;
+    border: 1px solid #32E0C4;
+}

@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./Wallet.css";
-// import WalletTable from "./WalletTable";
 import AddWallet from "./AddWallet";
 import AddBeneficiary from "./AddBeneficiary";
 import "./Benefactors.css";
@@ -11,13 +10,14 @@ import {
   benefactorsMockData,
   beneficiariesMockData
 } from "./data";
+import { withRouter } from "react-router";
+
 //import getTokenDetails from "./jwt";
 //import Axios from "axios";
 
 const Wallet = (props) => {
 
   // Wallet State management 
-  const [wallet, setWallet] = useState(null);
   const [totalBenefactors, setTotalBenefactors] = useState(0);
   const [pendingRequest, setPendingRequest] = useState(0);
   const [totalBeneficiary, setTotalBeneficiary] = useState(0);
@@ -33,36 +33,14 @@ const Wallet = (props) => {
     setBenefactors(benefactorsMockData)
     setTotalBenefactors(benefactorsMockData.length)
     setTotalBeneficiary(beneficiariesMockData.length)
-    //const token = await localStorage.getItem("UserToken");
-    //const userInfo = await getTokenDetails(token);
-    // const userId = userInfo.payload[0].id;
-
-    /**await Axios.get()
-      .then(async (res) => {
-        const wallet = await res.data;
-        if (wallet.data.length !== 0) {
-          setWallet(wallet.data);
-          setTotalBenefactors(Wallet.data.length);
-        }
-      })
-      .catch((err) => {
-        window.alert("Hoops!!!.. Some error occured please try again, make sure you're connected to internet");
-      });*/
-
   };
 
   useEffect(() => {
     fetchAllbenefactors();
   }, []);
 
-  // Direct to add benefactors page
-  const addBenefactorsHandler = () => {
-    // Note 
-    //  props.history.push("/dashboard/user/add/benefactor");
-  };
-
   const addBeneficiaryHandler = () => {
-    setAddBeneficiary(!addBeneficiary);
+    props.history.push("/addbeneficiary");
   }
 
   const addWalletHandler = () => {
@@ -89,7 +67,9 @@ const Wallet = (props) => {
           personal
         </div>
         <div className="action-btn row1-col2">
-          <button onClick={addBenefactorsHandler} >Add Benefactors</button>
+          <div></div>
+          <div></div>
+          <div></div>
           <div></div>
           <button onClick={addBeneficiaryHandler} >Add beneficiaries</button>
           <di></di>
@@ -126,4 +106,4 @@ const Wallet = (props) => {
   );
 };
 
-export default Wallet;
+export default withRouter(Wallet);
