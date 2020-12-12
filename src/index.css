@@ -35,3 +35,7 @@ body {
 button, a {
     cursor: pointer;
 }
+
+button:focus, button:active, input:focus, input:active {
+    outline: none;
+}
