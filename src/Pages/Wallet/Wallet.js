@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import "./Wallet.css";
-import WalletTable from "./WalletTable";
+// import WalletTable from "./WalletTable";
 import AddWallet from "./AddWallet";
 import AddBeneficiary from "./AddBeneficiary";
 import "./Benefactors.css";
@@ -61,6 +61,14 @@ const Wallet = (props) => {
     //  props.history.push("/dashboard/user/add/benefactor");
   };
 
+  const addBeneficiaryHandler = () => {
+    setAddBeneficiary(!addBeneficiary);
+  }
+
+  const addWalletHandler = () => {
+    setAddWallet(!addWallet);
+  }
+
   const displayBeneficiariesTable = () => {
     setShowBeneficiariesTable(true);
     setBeneficiaries(beneficiariesMockData)
@@ -83,9 +91,9 @@ const Wallet = (props) => {
         <div className="action-btn row1-col2">
           <button onClick={addBenefactorsHandler} >Add Benefactors</button>
           <div></div>
-          <button onClick={addBeneficiaryHandle} >Add beneficiaries</button>
+          <button onClick={addBeneficiaryHandler} >Add beneficiaries</button>
           <di></di>
-          <button onClick={fundWallet} >Fund Wallet</button>
+          <button onClick={addWalletHandler} >Fund Wallet</button>
         </div>
         <div className="walletDetails row2-spanned-across-two-columns">
           <div className="walletBalance">

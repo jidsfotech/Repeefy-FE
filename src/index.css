@@ -31,3 +31,11 @@ body {
     font-size: var(--font-size);
     background: var(--background-color);
 }
+
+button, a {
+    cursor: pointer;
+}
+
+button:focus, button:active, input:focus, input:active {
+    outline: none;
+}
