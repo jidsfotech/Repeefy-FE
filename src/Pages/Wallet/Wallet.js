@@ -1,5 +1,8 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./Wallet.css";
+import WalletTable from "./WalletTable";
+import AddWallet from "./AddWallet";
+import AddBeneficiary from "./AddBeneficiary";
 import "./Benefactors.css";
 import "./Beneficiaries.css";
 import BenefactorsTable from "./BenefactorsTable";
@@ -18,6 +21,8 @@ const Wallet = (props) => {
   const [totalBenefactors, setTotalBenefactors] = useState(0);
   const [pendingRequest, setPendingRequest] = useState(0);
   const [totalBeneficiary, setTotalBeneficiary] = useState(0);
+  const [addWallet, setAddWallet] = useState(false);
+  const [addBeneficiary, setAddBeneficiary] = useState(false);
   const [benefactors, setBenefactors] = useState(null)
   const [beneficiaries, setBeneficiaries] = useState(null)
   const [showBeneficiariesTable, setShowBeneficiariesTable] = useState(false)
@@ -78,9 +83,9 @@ const Wallet = (props) => {
         <div className="action-btn row1-col2">
           <button onClick={addBenefactorsHandler} >Add Benefactors</button>
           <div></div>
-          <button onClick={addBenefactorsHandler} >Add beneficiaries</button>
+          <button onClick={addBeneficiaryHandle} >Add beneficiaries</button>
           <di></di>
-          <button onClick={addBenefactorsHandler} >Fund Wallet</button>
+          <button onClick={fundWallet} >Fund Wallet</button>
         </div>
         <div className="walletDetails row2-spanned-across-two-columns">
           <div className="walletBalance">
@@ -107,6 +112,8 @@ const Wallet = (props) => {
           }
         </div>
       </div>
+      <AddWallet addWallet={addWallet} setAddWallet={setAddWallet} />
+      <AddBeneficiary addBeneficiary={addBeneficiary} setAddBeneficiary={setAddBeneficiary} />
     </div>
   );
 };
