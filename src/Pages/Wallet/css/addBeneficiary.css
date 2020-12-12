@@ -1,0 +1,101 @@
+.walletOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(47, 73, 91, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.walletOverlay .content {
+    position: relative;
+    width: 100%;
+    max-width: 700px;
+    min-height: 500px;
+    padding: 24px;
+    background-color: #fff;
+}
+
+.close {
+    position: absolute;
+    opacity: 20px;
+    right: 20px;
+    color: red;
+}
+
+.walletOverlay .content h1 {
+    text-align: center;
+    color: #32E0C4;
+    margin-bottom: 32px;
+}
+
+
+.BeneficiaryInput {
+    width: 100%;
+    margin-top: 1.5rem;
+    outline: none;
+}
+
+.BeneficiaryContent {
+    width: 100%;
+    height: 1rem;
+    margin: 0.3rem auto 1.2rem;
+    border: none;
+    border-bottom: 1px solid var(--primary-color);
+    font-size: 0.8rem;
+    padding: 0.4rem;
+}
+
+.BeneficiaryLabel {
+    font-size: 0.8rem;
+}
+
+.BeneficiarySelect {
+    width: 100%;
+    border: none;
+    margin: 0.3rem auto 1.2rem;
+    border-bottom: 1px solid var(--primary-color);
+    font-size: 0.8rem;
+    padding: 0.4rem;
+}
+
+.BeneficiaryBtn {
+    display: block;
+    width: 90%;
+    margin: auto;
+    height: 2.2rem;
+    background: var(--primary-color);
+    padding: 0.6rem;
+    text-align: center;
+    cursor: pointer;
+    border: none;
+    border-radius: 0.5rem;
+    color: #fff;
+    font-weight: bolder;
+    font-size: 0.96rem;
+}
+
+.BeneficiaryBtn:focus,
+.BeneficiaryBtn:active {
+    border: none;
+    outline: none;
+}
+
+.BeneficiaryBtn:hover,
+.paystack-button:hover {
+    background: var(--primary-color);
+    opacity: 0.5;
+}
