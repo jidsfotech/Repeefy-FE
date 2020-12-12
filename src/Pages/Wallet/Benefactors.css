@@ -42,12 +42,12 @@
 }
 
 .flex-wrapper .emptyInfo img {
-    height: 4em;
+    height: 8em;
     margin-top: 3em;
 }
 
 .flex-wrapper .emptyImg img {
-    height: 10em;
+    height: 15em;
 }
 
 /* Media Query */

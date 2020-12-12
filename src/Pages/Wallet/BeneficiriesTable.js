@@ -60,7 +60,7 @@ const RenderBeneficiariesTable = (props) => {
         //Here Im only returing the empty state componenet until Im sure of the data coming from the database (Note**to be removed)
         //return <NoBeneficiariesFound addBeneficiariesHandler={props.addBeneficiariesHandler} />;
 
-        if (!props.beneficiaries) {
+        if (true) {
              return <NoBeneficiariesFound addBeneficiariesHandler ={props.addBeneficiariesHandler}/>;
  
          } else {
