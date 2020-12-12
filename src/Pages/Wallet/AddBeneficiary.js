@@ -12,7 +12,6 @@ const AddBeneficiary = (props) => {
   const { register, handleSubmit, errors } = useForm();
   const [successStatus, setSuccessStatus] = useState(false);
   const [failedStatus, setFailedStatus] = useState(false);
-  const [failedMessage, setFailedMessage] = useState("");
 
   // Hooks
   const { addToast } = useToasts();

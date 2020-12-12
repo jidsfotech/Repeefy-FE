@@ -18,7 +18,6 @@ import { withRouter } from "react-router";
 const Wallet = (props) => {
 
   // Wallet State management 
-  const [wallet, setWallet] = useState(null);
   const [totalBenefactors, setTotalBenefactors] = useState(0);
   const [pendingRequest, setPendingRequest] = useState(0);
   const [totalBeneficiary, setTotalBeneficiary] = useState(0);
@@ -34,33 +33,11 @@ const Wallet = (props) => {
     setBenefactors(benefactorsMockData)
     setTotalBenefactors(benefactorsMockData.length)
     setTotalBeneficiary(beneficiariesMockData.length)
-    //const token = await localStorage.getItem("UserToken");
-    //const userInfo = await getTokenDetails(token);
-    // const userId = userInfo.payload[0].id;
-
-    /**await Axios.get()
-      .then(async (res) => {
-        const wallet = await res.data;
-        if (wallet.data.length !== 0) {
-          setWallet(wallet.data);
-          setTotalBenefactors(Wallet.data.length);
-        }
-      })
-      .catch((err) => {
-        window.alert("Hoops!!!.. Some error occured please try again, make sure you're connected to internet");
-      });*/
-
   };
 
   useEffect(() => {
     fetchAllbenefactors();
   }, []);
-
-  // Direct to add benefactors page
-  const addBenefactorsHandler = () => {
-    // Note 
-    //  props.history.push("/dashboard/user/add/benefactor");
-  };
 
   const addBeneficiaryHandler = () => {
     props.history.push("/addbeneficiary");
