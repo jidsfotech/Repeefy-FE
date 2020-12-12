@@ -1,6 +1,6 @@
 .Wallet {
     padding-top: 1rem;
-    padding-bottom: 3rem;
+    padding-bottom: 5rem;
     background-color: #293B50;
     width: 100vw;
 }
@@ -31,7 +31,7 @@
    padding: 5px;
 }
 
-.addBenefactors-btn {
+.action-btn {
     align-self: end;
     display: flex;
     justify-content: space-between;
@@ -40,7 +40,7 @@
     justify-self: end;
 }
 
-.addBenefactors-btn button {
+.action-btn button {
     background: #243344;
     color: #32E0C4;
     border: 2px solid #32E0C4;
@@ -50,9 +50,9 @@
     font-size: 16px;
 }
 
-.addBenefactors-btn button:focus,
-.addBenefactors-btn button:active, 
-.addBenefactors-btn button:hover {
+.action-btn button:focus,
+.action-btn button:active, 
+.action-btn button:hover {
     background: #32E0C4;
     border: 2px solid #32E0C4;
     color: rgb(64, 66, 66);
