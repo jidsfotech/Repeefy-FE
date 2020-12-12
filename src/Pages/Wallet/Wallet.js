@@ -78,7 +78,7 @@ const Wallet = (props) => {
         <div className="walletDetails row2-spanned-across-two-columns">
           <div className="walletBalance">
             <div className="space-div"> Wallet Balance</div>
-            <div className="space-div">&#x20A6; 7000 </div>
+            <div className="space-div">&#x20A6; 0.00 </div>
           </div>
           <div className="pendingRequest">
             <div className="space-div"> Pending Request </div>
@@ -86,11 +86,11 @@ const Wallet = (props) => {
           </div>
           <div className="totalBenefactors" onClick={displayBenefactorsTable}>
             <div className="space-div"> Total Benefactors</div>
-            <div className="space-div">{totalBenefactors}</div>
+            <div className="space-div">0</div>
           </div>
           <div className="totalBeneficiary" onClick={displayBeneficiariesTable}>
             <div className="space-div" > Total Beneficiary</div>
-            <div className="space-div"> {totalBeneficiary}</div>
+            <div className="space-div"> 0</div>
           </div>
         </div>
         <div className="TableWrapper" >

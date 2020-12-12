@@ -54,7 +54,7 @@ const RenderBenefactorsTable = (props) => {
 
     //return "NoBenefactorFound" component if "props === null". i.e if the current user has no benefactors
     var tableRows = () => {
-        if (!props.benefactors) {
+        if (true) {
             return <NoBenefactorFound />;
         } else {
             props.benefactors.forEach((benefactor) => {
