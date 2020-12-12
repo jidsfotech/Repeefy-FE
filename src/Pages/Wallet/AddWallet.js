@@ -12,6 +12,43 @@ const AddWallet = ({addWallet, setAddWallet}) => {
         overlay.classList.remove('show');
     } 
 
+    const reference = new Date().getTime();
+  const apiKey = process.env.REACT_APP_ID;
+
+  // Paystack Config
+  const config = {
+    reference,
+    email: "Danireptor7@gmail.com",
+    amount: amount * 100,
+    publicKey: apiKey,
+    metadata: {
+      name: "Daniel",
+      phone: "07037030402",
+    },
+    text: "Fund"
+  };
+
+//   const onSuccess = (data) => {
+//     const userId = "blablabla";
+//     const payload = {
+//       reference: data.reference,
+//       amount: amount
+//     };
+//     //Update API on success
+//     Axios.post(`/transactions/credit_wallet?access_token=${token}&user_id=${userId}`, payload)
+//       .then((res) => {
+//         //implement toast on success
+//       })
+//       .catch((err) => err);
+//   };
+
+//   const onClose = () => {
+//     // implementation for whatever you want to do when the Paystack dialog closed.
+//   };
+  
+
+  const initializePayment = usePaystackPayment(config);
+
     return (
         <>
             <div className={addWallet ? `walletOverlay show` : 'walletOverlay' }>

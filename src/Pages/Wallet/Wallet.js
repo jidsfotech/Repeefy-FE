@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import "./Wallet.css";
-// import WalletTable from "./WalletTable";
 import AddWallet from "./AddWallet";
 import AddBeneficiary from "./AddBeneficiary";
 import "./Benefactors.css";
@@ -11,6 +10,8 @@ import {
   benefactorsMockData,
   beneficiariesMockData
 } from "./data";
+import { withRouter } from "react-router";
+
 //import getTokenDetails from "./jwt";
 //import Axios from "axios";
 
@@ -62,7 +63,7 @@ const Wallet = (props) => {
   };
 
   const addBeneficiaryHandler = () => {
-    setAddBeneficiary(!addBeneficiary);
+    props.history.push("/addbeneficiary");
   }
 
   const addWalletHandler = () => {
@@ -89,7 +90,9 @@ const Wallet = (props) => {
           personal
         </div>
         <div className="action-btn row1-col2">
-          <button onClick={addBenefactorsHandler} >Add Benefactors</button>
+          <div></div>
+          <div></div>
+          <div></div>
           <div></div>
           <button onClick={addBeneficiaryHandler} >Add beneficiaries</button>
           <di></di>
@@ -126,4 +129,4 @@ const Wallet = (props) => {
   );
 };
 
-export default Wallet;
+export default withRouter(Wallet);

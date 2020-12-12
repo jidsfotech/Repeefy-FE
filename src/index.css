@@ -23,6 +23,7 @@ li {
 html,
 body {
     scroll-behavior: smooth;
+    background: #293B50;
 }
 
 body {

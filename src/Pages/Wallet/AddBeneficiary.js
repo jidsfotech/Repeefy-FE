@@ -1,176 +1,156 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import './css/addBeneficiary.css';
+import { withRouter } from "react-router";
+import { useToasts } from "react-toast-notifications";
+import axios from 'axios';
+import "./css/addBeneficiary.css";
 
-const AddWallet = ({addBeneficiary, setAddBeneficiary}) => {
+const AddBeneficiary = (props) => {
+  // States
 
-    const { register, handleSubmit, errors } = useForm();
-    const [duration, setDuration] = useState("DEFAULT");
-    const [successStatus, setSuccessStatus] = useState(false);
-    const [successMessage, setSuccessMessage] = useState("");
-    const [failedStatus, setFailedStatus] = useState(false);
-    const [failedMessage, setFailedMessage] = useState("");
-    const [loading, setLoading] = useState(false);
-    const [data, setData] = useState([]);
+  const [duration, setDuration] = useState("DEFAULT");
+  const { register, handleSubmit, errors } = useForm();
+  const [successStatus, setSuccessStatus] = useState(false);
+  const [failedStatus, setFailedStatus] = useState(false);
+  const [failedMessage, setFailedMessage] = useState("");
 
-    useEffect(() => {
-        axios.get(`https://repify-demo-api.herokuapp.com/api/beneficiary`).then((res) => {
-            let data = res.data
-            setData(data);
-        })
-    }, [])
+  // Hooks
+  const { addToast } = useToasts();
 
-    const handleOnclick = () => {
-        setAddBeneficiary(false)
-        const overlay = document.querySelector('.walletOverlay');
-        overlay.classList.remove('show');
-    } 
+  // Controllers
 
-    const handleSuccess = () => {
-        setSuccessStatus(!successStatus);
-    };
+  const handleSuccess = () => {
+    setSuccessStatus(!successStatus);
+  };
 
-    const handleSuccessMessage = (message) => {
-        setSuccessMessage(message);
-    };
+  const handleSuccessMessage = (message) => {
+    addToast(message, { appearance: "success", autoDismiss: true });
+    setTimeout(() => {
+        props.history.replace("/dashboard");
+    }, 6000);
+  };
 
-    const handleFailed = () => {
-        setFailedStatus(!failedStatus);
-    };
+  const handleFailed = () => {
+    setFailedStatus(!failedStatus);
+  };
 
-    const handleFailedMessage = (message) => {
-        setFailedMessage(message);
-    };
+  const handleFailedMessage = (message) => {
+    addToast(message, { appearance: "error", autoDismiss: true });
+  };
 
-    const handleDuration = (e) => {
-        setDuration(e.target.value);
-    };
+  const handleDuration = (e) => {
+    setDuration(e.target.value);
+  };
 
-    const onSubmit = (data) => {
-        const token = localStorage.getItem("UserToken");
-        console.log('clicked')
-        return axios.post(`https://repify-demo-api.herokuapp.com/api/beneficiary?access_token=${token}`, data)
-          .then((res) => {
-            window.alert('success')
-            setAddBeneficiary(false)
-            handleSuccessMessage(
-              `Successfully added ${data.beneficiary_email} as a beneficiary`
-            );
-            handleSuccess();
-          })
-          .catch((err) => {
-            if (err.response.data.hasOwnProperty("message")) {
-              return (
-                window.alert('false'),
-                setAddBeneficiary(false),
-                  console.log(err.response.data.message),
-                  handleFailedMessage(err.response.data.message),
-                   handleFailed()
-              );
-            }
-            return (
-                handleFailedMessage("Something Doesn't seem right, try again"),
-                 handleFailed()
-            );
-          });
-      };
+  const onSubmit = (data) => {
+    const token = localStorage.getItem("UserToken");
+    return axios.post(`https://repify-demo-api.herokuapp.com/api/beneficiary?access_token=${token}`, data)
+      .then((res) => {
+        handleSuccessMessage(
+          `Successfully added ${data.beneficiary_email} as a beneficiary`
+        );
+        handleSuccess();
+      })
+      .catch((err) => {
+        if (err.response.data.hasOwnProperty("message")) {
+          return (
+            handleFailedMessage(err.response.data.message) && handleFailed()
+          );
+        }
+        return (
+          handleFailedMessage("Something Doesn't seem right, try again"),
+          handleFailed()
+        );
+      });
+  };
 
-    return (
-        <>
-            <div className={addBeneficiary ? `walletOverlay show` : 'walletOverlay' }>
-                
-                <div className="content">
-                    <div  onClick={handleOnclick} className="close">X</div>
-                    <h1>Add Beneficiary</h1>
-                    <div className="BeneficiaryInput">
-                        <form onSubmit={handleSubmit(onSubmit)}>
-                            <label className="BeneficiaryLabel">
-                            Beneficiaries Email
-                            <input
-                                ref={register({ required: true })}
-                                type="text"
-                                className="BeneficiaryContent"
-                                name="beneficiary_email"
-                                placeholder="Users Email or Repify ID"
-                            />
-                            {errors.beneficiary_email && "Email or Id is required."}
-                            </label>
-                            <label className="BeneficiaryLabel">
-                            When should we pay?
-                            </label>
-                            <input
-                                ref={register({ required: true, pattern: /\d+/ })}
-                                type="number"
-                                min="1"
-                                max="28"
-                                className="BeneficiaryContent"
-                                placeholder="Day in a month (1st - 28th)"
-                                name="pay_date"
-                            />
-                            {errors.pay_date && "Please enter day between 1 - 28"}
-                            <label className="BeneficiaryLabel">
-                            Duration
-                            <select
-                                className="BeneficiarySelect"
-                                name="duration"
-                                ref={register({ required: true })}
-                                value={duration}
-                                onChange={handleDuration}
-                            >
-                                <option value="DEFAULT" name="DEFAULT" disabled>
-                                Select a duration
-                                </option>
-                                <option value="one_month" name="one_month">
-                                One Month
-                                </option>
-                                <option value="three_months" name="three_months">
-                                Three Months
-                                </option>
-                                <option value="six_months" name="six_months">
-                                Six Months
-                                </option>
-                                <option value="one_year" name="one_year">
-                                One Year
-                                </option>
-                                <option value="recursive" name="recursive">
-                                Recursive
-                                </option>
-                            </select>
-                            </label>
-                            <label className="BeneficiaryLabel">
-                            Amount
-                            <input
-                                ref={register({ required: true })}
-                                type="number"
-                                className="BeneficiaryContent"
-                                placeholder="How much should we send?"
-                                name="amount"
-                            />
-                            {errors.amount && "An amount is required."}
-                            </label>
-                            <label className="BeneficiaryLabel">
-                            Description
-                            <input
-                                ref={register({ required: true })}
-                                type="text"
-                                className="BeneficiaryContent"
-                                placeholder="What is it for?"
-                                name="title"
-                            />
-                            {errors.tag && "Please enter a description"}
-                            </label>
-                            <input
-                            type="submit"
-                            className="BeneficiaryBtn"
-                            />
-                        </form>
-                        </div>
-                </div>
-                
-            </div>
-        </>
-    );
-}
+  return (
+    <>
+      {/* Add Beneficiary Container */}
+      <div className="AddBeneficiary">
+        <h2 className="HeroTitle">Add Beneficiary</h2>
+          <div className="BeneficiaryWrapper">
+            <form onSubmit={handleSubmit(onSubmit)}>
+              <div className="FlexWrapper MarginTop4">
+                <aside className="LeftWrapper">
+                  <div className="EditHero">
+                    <h4 className="SmallHeading">Please Fill the form below</h4>
+                  </div>
 
-export default AddWallet;
+                  <input
+                    type="email"
+                    className="BeneficiaryContent EditInputs Bene"
+                    name="beneficiary_email"
+                    placeholder="Beneficiary Email"
+                    ref={register({ required: true })}
+                  />
+                  <input
+                    type="number"
+                    className="BeneficiaryContent EditInputs Bene"
+                    ref={register({ required: true, pattern: /\d+/ })}
+                    min="1"
+                    max="28"
+                    name="pay_date"
+                    placeholder="When should we pay? (1st - 28th)"
+                  />
+                  <select
+                    className="BeneficiarySelect EditInputs Bene"
+                    name="duration"
+                    ref={register({ required: true })}
+                    value={duration}
+                    onChange={handleDuration}
+                  >
+                    <option value="DEFAULT" name="DEFAULT" disabled>
+                      Select a duration
+                    </option>
+                    <option value="one_month" name="one_month">
+                      One Month
+                    </option>
+                    <option value="three_months" name="three_months">
+                      Three Months
+                    </option>
+                    <option value="six_months" name="six_months">
+                      Six Months
+                    </option>
+                    <option value="one_year" name="one_year">
+                      One Year
+                    </option>
+                    <option value="recursive" name="recursive">
+                      Recursive
+                    </option>
+                  </select>
+                  <input
+                    ref={register({ required: true })}
+                    type="number"
+                    className="BeneficiaryContent EditInputs Bene"
+                    placeholder="How much should we send?"
+                    name="amount"
+                  />
+                  {errors.amount && "An amount is required."}
+                  <input
+                    ref={register({ required: true })}
+                    type="text"
+                    className="BeneficiaryContent EditInputs Bene"
+                    placeholder="What is it for?"
+                    name="title"
+                  />
+                </aside>
+                <aside className="RightSide">
+                  <div className="Notes">
+                    <h5 className="NoteH">Note</h5>
+                    <p className="NotesP">
+                      Adding a user as a beneficiary means the users will get
+                      the amount
+                    </p>
+                  </div>
+                  <input type="submit" className="BeneficiaryAdd" />
+                </aside>
+              </div>
+            </form>
+          </div>
+      </div>
+    </>
+  );
+};
+
+export default withRouter(AddBeneficiary);
