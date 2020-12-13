@@ -80,9 +80,9 @@ const Wallet = (props) => {
           </div>
         </div>
         <div className="walletDetails row2-spanned-across-two-columns">
-          <div className="walletBalance">
-            <div className="space-div"> Wallet Balance</div>
-            <div className="space-div">&#x20A6; 0.00 </div>
+          <div className="walletBalance info-tab" >
+            <div > Wallet Balance</div>
+            <div >&#x20A6; 0.00 </div>
           </div>
           <div className="pendingRequest info-tab">
             <div > Pending Request </div>
