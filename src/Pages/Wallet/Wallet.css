@@ -1,18 +1,15 @@
 .Wallet {
-    padding-top: 1rem;
-    padding-bottom: 5rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
     background-color: #293B50;
     width: 100vw;
 }
 
-.grid-container {
-    margin-right: 3rem;
+.row1-col1{
+    display: flex;
+    justify-content: space-between;
+    margin-right: 6rem;
     margin-left: 6rem;
-    display: grid;
-    grid-template-columns: 37% 55%;
-    grid-template-rows: 20% 15% auto;
-    grid-column-gap: 50px;
-    grid-row-gap: 50px;
 }
 
 .pageTitle {
@@ -32,12 +29,10 @@
 }
 
 .action-btn {
-    align-self: end;
     display: flex;
     justify-content: space-between;
     padding: 5px;
-    width: 35rem;
-    justify-self: end;
+    width: 38rem;
 }
 
 .action-btn button {
@@ -60,62 +55,51 @@
 }
 
 .walletDetails {
-    grid-column: 1 / span 2;
     display: flex;
     justify-content: space-between;
+    margin-right: 6rem;
+    margin-left: 6rem;
+    margin-top: 2rem;
+    padding: 5px;
 }
 
-.totalBenefactors,
-.pendingRequest,
-.walletBalance,
-.totalBeneficiary {
-    padding: 10px;
+.info-tab {
+    padding: 1rem;
     background: #F9FAFA;    
     border-radius: 8px;
+    height: auto;
 }
 
-.totalBenefactors:hover,
-.pendingRequest:hover,
-.walletBalance:hover,
-.totalBeneficiary:hover {
+.info-tab:focus,
+.info-tab:hover,
+.info-tab:active {
     background: #32E0C4;
     color: rgb(64, 66, 66)
 }
 
-.walletTableWrapper {
-    grid-column: 1 / span 2;
+.totalBenefactors {
+    padding: 5px;
+    background: #32E0C4;
+    border-radius: 8px;
+    height: auto;
+    padding: 1rem;
+}
+
+.totalBenefactors,
+.totalBeneficiary {
+    cursor: pointer;
+}
+
+.TableWrapper {
+    margin-right: 6rem;
+    margin-left: 6rem;
+    margin-top: 2rem;
     background: rgba(118, 234, 215, 0.08);
     border-radius: 5px;
-    color: #F3F3F4;
-}
-
-.walletTable {
-    width: 100%;
-    padding: 20px;
-    text-align: left;
-    font-weight: 12px;
-    font-size: 14px;
-}
-
-.walletTable thead th {
-    padding: 15px;
-}
-
-.walletTableBody {
-    text-align: left;
-}
-
-.walletTableRows {
-    border: 1px solid #e7eaec;
-    box-shadow: 0 0 0 1px rgb(243, 244, 247);
-}
-
-.walletTableRows td {
-    padding: 15px;
-    font-size: 16px;
-    font-weight: 400;
-    line-height: 24px;
-    text-align: left;
+    color: #D5D6D8;
+    padding-left: 2rem;
+    padding-bottom: 5rem;
+    overflow: auto;
 }
 
 .flexWrapper {
@@ -139,76 +123,49 @@
     margin-bottom: 1rem;
 }
 
-/* Media Query */
+/** Media Query */
 
-@media screen and (max-width: 1040px) {
-    .grid-container {
-        padding-left: 5px;
-        margin-left: 0rem;
-        grid-template-columns: 22rem;
-        grid-template-rows: 6em 3em 15em auto;
-        row-gap: 2rem;
-        width: 100%;
-        justify-content: center;
+@media screen and (max-width: 1040px) {    
+    .row1-col1{
+        flex-direction: column;
+        margin-right: 5px;
+        margin-left: 10px;
+        height: 15rem;
     }
-
-    .addBenefactors-btn {
-        width: 22rem;
+    
+    .action-btn {
+        flex-direction: column;
+        height: 9rem;
+        width: auto;
     }
-
-    .addBenefactors-btn button {
-        padding: 2px;
-        font-size: 12px;
-        width: fit-content ;
-        height: 33px;
-    }
-
+    
     .walletDetails {
         flex-direction: column;
-        grid-column: 1 / span 1;
+        margin-right: 5px;
+        margin-left: 10px;
+        padding: 5px;
+        height: 14rem;
     }
-
-    .totalBenefactors,
-    .pendingRequest,
-    .walletBalance,
-    .totalBeneficiary {
+    
+    .info-tab {
         display: flex;
         justify-content: space-between;
-        padding: 10px;
+        padding: 12px;
     }
-
-    .walletTableWrapper {
-        grid-column: 1 / span 1;
+ 
+    .totalBenefactors {
+        display: flex;
+        justify-content: space-between;
+        padding: 12px;
     }
-
-    .walletTable {
-        font-weight: 11px;
-        font-size: 10px;
+    
+    .TableWrapper {
+        margin-right: 5px;
+        margin-left: 5px;
+        padding-left: 5px;
     }
-
-    .walletTable thead th {
-        font-size: 11px;
-    }
-
-    .walletTable thead tr th:nth-child(2) {
-        display: none;
-    }
-
-    .walletTableRows td {
-        font-size: 11px;
-        text-align: left;
-    }
-
-    .walletTableRows td:nth-child(2) {
-        display: none;
-    }
-
-    .flexWrapper{
-        padding: 5px;
-        flex-direction: column;
-        align-items: center;
-        height: fit-content;
-        width: 25em;
-        margin-left: 2rem;
+    
+    .flexWrapper {
+     flex-direction: column; 
     }
 }

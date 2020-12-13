@@ -1,20 +1,10 @@
 
-.TableWrapper {
-    grid-column: 1 / span 2;
-    background: rgba(118, 234, 215, 0.08);
-    border-radius: 5px;
-    color: #D5D6D8;
-    margin: auto;
-    width: 100%;
-    padding-left: 2rem;
-    padding-bottom: 5rem;
-}
-
 .benefactorsTable {
     width: 100%;
     text-align: left;
     font-weight: 12px;
     font-size: 14px;
+    padding: 10px;
 }
 
 .benefactorsTable thead th {

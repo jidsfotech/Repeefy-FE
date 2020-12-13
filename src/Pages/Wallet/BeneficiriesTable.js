@@ -12,8 +12,7 @@ const NoBeneficiariesFound = (props) => {
                     <div className="emptyInfo">
                         <h6>You have no Beneficiaries</h6>
                         <div></div>
-                        <div className="action-btn"><button onClick={props.addBeneficiariesHandler}>Add them</button></div>
-                    </div>
+                        <button onClick={props.addBeneficiariesHandler}>Add them</button></div>
                     <div className="emptyImg">
                         <img src="https://res.cloudinary.com/repify/image/upload/v1601862897/empty_state.svg" alt="beneficiariesTableEmpty"></img>
                     </div>
@@ -60,15 +59,15 @@ const RenderBeneficiariesTable = (props) => {
         //Here Im only returing the empty state componenet until Im sure of the data coming from the database (Note**to be removed)
         //return <NoBeneficiariesFound addBeneficiariesHandler={props.addBeneficiariesHandler} />;
 
-        if (!props.beneficiaries) {
-             return <NoBeneficiariesFound addBeneficiariesHandler ={props.addBeneficiariesHandler}/>;
- 
-         } else {
-             props.beneficiaries.forEach((beneficiary) => {
-                 rows.push(<RenderTableRows beneficiary={beneficiary} key={beneficiary.beneficiary_name}  />);
-             });
-             return rows;
-         }
+        if (true) {
+            return <NoBeneficiariesFound addBeneficiariesHandler={props.addBeneficiariesHandler} />;
+
+        } else {
+            props.beneficiaries.forEach((beneficiary) => {
+                rows.push(<RenderTableRows beneficiary={beneficiary} key={beneficiary.beneficiary_name} />);
+            });
+            return rows;
+        }
     };
     return (
         <table className="beneficiariesTable">

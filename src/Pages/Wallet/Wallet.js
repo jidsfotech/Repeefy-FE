@@ -25,7 +25,7 @@ const Wallet = (props) => {
 
   // connect to back end and fetch all benefactors data for a user
   const fetchAllbenefactors = async () => {
-    setBenefactors(benefactorsMockData)
+    setBenefactors(beneficiariesMockData)
     setTotalBenefactors(benefactorsMockData.length)
     setTotalBeneficiary(beneficiariesMockData.length)
     //const token = await localStorage.getItem("UserToken");
@@ -57,12 +57,16 @@ const Wallet = (props) => {
   };
 
   const displayBeneficiariesTable = () => {
+    document.getElementById("totalBeneficiary").style.background = "#32E0C4"
+    document.getElementById("totalBenefactors").style.background = "#F9FAFA"
     setShowBeneficiariesTable(true);
     setBeneficiaries(beneficiariesMockData)
     setBenefactors(null)
   }
 
   const displayBenefactorsTable = () => {
+    document.getElementById("totalBenefactors").style.background = "#32E0C4"
+    document.getElementById("totalBeneficiary").style.background = "#F9FAFA"
     setShowBeneficiariesTable(false);
     setBeneficiaries(null)
     setBenefactors(benefactorsMockData)
@@ -71,36 +75,38 @@ const Wallet = (props) => {
   return (
     <div className="Wallet">
       <div className="grid-container">
-        <div className="pageTitle row1-col1">
-          <div className="H1"> Wallet</div>
-          personal
+        <div className="row1-col1">
+          <div className="pageTitle">
+            <div className="H1"> Wallet</div>
+            personal
         </div>
-        <div className="action-btn row1-col2">
-          <button onClick={addBenefactorsHandler} >Add Benefactors</button>
-          <div></div>
-          <button onClick={addBenefactorsHandler} >Add beneficiaries</button>
-          <di></di>
-          <button onClick={addBenefactorsHandler} >Fund Wallet</button>
+          <div className="action-btn">
+            <button onClick={addBenefactorsHandler} >Add Benefactors</button>
+            <div></div>
+            <button onClick={addBenefactorsHandler} >Add beneficiaries</button>
+            <di></di>
+            <button onClick={addBenefactorsHandler} >Fund Wallet</button>
+          </div>
         </div>
         <div className="walletDetails row2-spanned-across-two-columns">
-          <div className="walletBalance">
-            <div className="space-div"> Wallet Balance</div>
-            <div className="space-div">&#x20A6; 7000 </div>
+          <div className="walletBalance info-tab">
+            <div > Wallet Balance</div>
+            <div >&#x20A6; 7000 </div>
           </div>
-          <div className="pendingRequest">
-            <div className="space-div"> Pending Request </div>
-            <div className="space-div">{pendingRequest}</div>
+          <div className="pendingRequest info-tab">
+            <div > Pending Request </div>
+            <div >{pendingRequest}</div>
           </div>
-          <div className="totalBenefactors" onClick={displayBenefactorsTable}>
-            <div className="space-div"> Total Benefactors</div>
-            <div className="space-div">{totalBenefactors}</div>
+          <div className="totalBeneficiary info-tab" onClick={displayBeneficiariesTable} id="totalBeneficiary">
+            <div > Total Beneficiary</div>
+            <div > {totalBeneficiary}</div>
           </div>
-          <div className="totalBeneficiary" onClick={displayBeneficiariesTable}>
-            <div className="space-div" > Total Beneficiary</div>
-            <div className="space-div"> {totalBeneficiary}</div>
+          <div className="totalBenefactors " onClick={displayBenefactorsTable} id="totalBenefactors">
+            <div > Total Benefactors</div>
+            <div >{totalBenefactors}</div>
           </div>
         </div>
-        <div className="TableWrapper" >
+        <div className="TableWrapper row3-spanned-across-two-columns" >
           {showBeneficiariesTable ?
             <BeneficiariesTable beneficiaries={beneficiaries} /> :
             <BenefactorsTable benefactors={benefactors} />
