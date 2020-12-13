@@ -23,6 +23,7 @@ li {
 html,
 body {
     scroll-behavior: smooth;
+    background: #293B50;
 }
 
 body {
@@ -30,4 +31,12 @@ body {
     color: var(--text-color);
     font-size: var(--font-size);
     background: var(--background-color);
+}
+
+button, a {
+    cursor: pointer;
+}
+
+button:focus, button:active, input:focus, input:active {
+    outline: none;
 }

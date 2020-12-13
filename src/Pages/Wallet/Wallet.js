@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./Wallet.css";
+import AddWallet from "./AddWallet";
+import AddBeneficiary from "./AddBeneficiary";
 import "./Benefactors.css";
 import "./Beneficiaries.css";
 import BenefactorsTable from "./BenefactorsTable";
@@ -8,16 +10,19 @@ import {
   benefactorsMockData,
   beneficiariesMockData
 } from "./data";
+import { withRouter } from "react-router";
+
 //import getTokenDetails from "./jwt";
 //import Axios from "axios";
 
 const Wallet = (props) => {
 
   // Wallet State management 
-  const [wallet, setWallet] = useState(null);
   const [totalBenefactors, setTotalBenefactors] = useState(0);
   const [pendingRequest, setPendingRequest] = useState(0);
   const [totalBeneficiary, setTotalBeneficiary] = useState(0);
+  const [addWallet, setAddWallet] = useState(false);
+  const [addBeneficiary, setAddBeneficiary] = useState(false);
   const [benefactors, setBenefactors] = useState(null)
   const [beneficiaries, setBeneficiaries] = useState(null)
   const [showBeneficiariesTable, setShowBeneficiariesTable] = useState(false)
@@ -28,33 +33,19 @@ const Wallet = (props) => {
     setBenefactors(beneficiariesMockData)
     setTotalBenefactors(benefactorsMockData.length)
     setTotalBeneficiary(beneficiariesMockData.length)
-    //const token = await localStorage.getItem("UserToken");
-    //const userInfo = await getTokenDetails(token);
-    // const userId = userInfo.payload[0].id;
-
-    /**await Axios.get()
-      .then(async (res) => {
-        const wallet = await res.data;
-        if (wallet.data.length !== 0) {
-          setWallet(wallet.data);
-          setTotalBenefactors(Wallet.data.length);
-        }
-      })
-      .catch((err) => {
-        window.alert("Hoops!!!.. Some error occured please try again, make sure you're connected to internet");
-      });*/
-
   };
 
   useEffect(() => {
     fetchAllbenefactors();
   }, []);
 
-  // Direct to add benefactors page
-  const addBenefactorsHandler = () => {
-    // Note 
-    //  props.history.push("/dashboard/user/add/benefactor");
-  };
+  const addBeneficiaryHandler = () => {
+    props.history.push("/addbeneficiary");
+  }
+
+  const addWalletHandler = () => {
+    setAddWallet(!addWallet);
+  }
 
   const displayBeneficiariesTable = () => {
     document.getElementById("totalBeneficiary").style.background = "#32E0C4"
@@ -81,17 +72,17 @@ const Wallet = (props) => {
             personal
         </div>
           <div className="action-btn">
-            <button onClick={addBenefactorsHandler} >Add Benefactors</button>
+            {/**<button onClick={addBenefactorsHandler} >Add Benefactors</button>*/}
             <div></div>
-            <button onClick={addBenefactorsHandler} >Add beneficiaries</button>
+            <button onClick={addBeneficiaryHandler} >Add beneficiaries</button>
             <di></di>
-            <button onClick={addBenefactorsHandler} >Fund Wallet</button>
+            <button onClick={addWalletHandler} >Fund Wallet</button>
           </div>
         </div>
         <div className="walletDetails row2-spanned-across-two-columns">
-          <div className="walletBalance info-tab">
-            <div > Wallet Balance</div>
-            <div >&#x20A6; 7000 </div>
+          <div className="walletBalance">
+            <div className="space-div"> Wallet Balance</div>
+            <div className="space-div">&#x20A6; 0.00 </div>
           </div>
           <div className="pendingRequest info-tab">
             <div > Pending Request </div>
@@ -113,8 +104,10 @@ const Wallet = (props) => {
           }
         </div>
       </div>
+      <AddWallet addWallet={addWallet} setAddWallet={setAddWallet} />
+      <AddBeneficiary addBeneficiary={addBeneficiary} setAddBeneficiary={setAddBeneficiary} />
     </div>
   );
 };
 
-export default Wallet;
+export default withRouter(Wallet);

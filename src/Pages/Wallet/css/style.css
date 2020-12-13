@@ -1,0 +1,76 @@
+.walletOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(47, 73, 91, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    transform: scale(0);
+    opacity: 0;
+    transform-origin: center;
+    cursor: pointer;
+}
+
+.show {
+    transform: scale(1);
+    opacity: 1;
+}
+
+.walletOverlay .content {
+    position: relative;
+    width: 100%;
+    max-width: 400px;
+    padding: 24px;
+    background-color: #fff;
+}
+
+.close {
+    position: absolute;
+    opacity: 20px;
+    right: 20px;
+    color: red;
+}
+
+.walletOverlay .content h1 {
+    text-align: center;
+    color: #32E0C4;
+    margin-bottom: 32px;
+}
+
+.walletOverlay .content form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.walletOverlay .content form .input-group {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin-bottom: 32px;
+}
+
+.walletOverlay .content form .input-group input {
+    height: 40px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #32E0C4;
+}
+
+.walletOverlay .content form button {
+    background-color: #32E0C4;
+    border: none;
+    outline: none;
+    height: 40px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all .3s ease;
+}
+
+.walletOverlay .content form button:hover {
+    background-color: #26b79e;
+}

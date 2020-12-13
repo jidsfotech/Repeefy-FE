@@ -25,7 +25,7 @@
 }
 
 .space-div {
-   padding: 5px;
+    padding: 5px;
 }
 
 .action-btn {
@@ -46,7 +46,7 @@
 }
 
 .action-btn button:focus,
-.action-btn button:active, 
+.action-btn button:active,
 .action-btn button:hover {
     background: #32E0C4;
     border: 2px solid #32E0C4;
@@ -106,7 +106,7 @@
     display: flex;
     align-content: center;
     justify-content: space-around;
-    width: 100%;  
+    width: 100%;
 }
 
 .flexWrapper .emptyImg img {
