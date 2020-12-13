@@ -1,4 +1,5 @@
 import React from "react";
+import "./css/BenefactorsTable.css"
 
 /** 
  * Renders an empty state if the current user has no benefactor to display

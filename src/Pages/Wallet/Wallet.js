@@ -1,9 +1,7 @@
 import React, { useState, useEffect } from "react";
-import "./Wallet.css";
+import "./css/Wallet.css";
 import AddWallet from "./AddWallet";
 import AddBeneficiary from "./AddBeneficiary";
-import "./Benefactors.css";
-import "./Beneficiaries.css";
 import BenefactorsTable from "./BenefactorsTable";
 import BeneficiariesTable from "./BeneficiriesTable";
 import {
